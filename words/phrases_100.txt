@@ -1,0 +1,98 @@
+Come stai? — Как ты?
+Mi chiamo Luca — Меня зовут Лука
+Dove sei? — Где ты?
+Va bene — Всё хорошо
+Non capisco — Я не понимаю
+Parla più lentamente — Говорите медленнее
+Può ripetere? — Можете повторить?
+Quanto costa? — Сколько стоит?
+Dove si trova...? — Где находится...?
+Mi dispiace — Мне жаль
+Buongiorno — Доброе утро
+Buonasera — Добрый вечер
+Buonanotte — Спокойной ночи
+Arrivederci — До свидания
+A presto — До скорого
+Grazie — Спасибо
+Prego — Пожалуйста
+Scusa — Извини
+Permesso — Разрешите
+Aiuto! — Помогите!
+Attenzione! — Осторожно!
+Che ore sono? — Который час?
+Dove abiti? — Где ты живёшь?
+Sto bene — Я в порядке
+Ho fame — Я голоден
+Ho sete — Я хочу пить
+Sto male — Мне плохо
+Tutto a posto — Всё в порядке
+Non lo so — Я не знаю
+Forse — Может быть
+Certo — Конечно
+Va bene così — Так хорошо
+Anch’io — Я тоже
+Neanch’io — Я тоже нет
+Davvero? — Правда?
+Che bello! — Как красиво!
+Che peccato — Какая жалость
+Non importa — Не важно
+Piano piano — Потихоньку
+Di niente — Не за что
+Benvenuto — Добро пожаловать
+Buona fortuna — Удачи
+In bocca al lupo — Ни пуха ни пера
+Crepi il lupo — К чёрту!
+Ti amo — Я тебя люблю
+Ti voglio bene — Я тебя люблю (дружески)
+Mi manchi — Мне тебя не хватает
+Andiamo — Пошли
+Aspetta — Подожди
+Vieni qui — Иди сюда
+Che fai? — Что делаешь?
+Cosa significa...? — Что значит...?
+Va tutto bene — Всё хорошо
+Sto studiando — Я учусь
+Sono stanco — Я устал
+Sono felice — Я счастлив
+Sono triste — Мне грустно
+Sono arrabbiato — Я зол
+Tranquillo — Спокойно
+Hai ragione — Ты прав
+Hai torto — Ты не прав
+Attento — Осторожно
+È urgente — Это срочно
+Ho bisogno di aiuto — Мне нужна помощь
+Dove andiamo? — Куда мы идём?
+Che succede? — Что происходит?
+È lontano — Это далеко
+È vicino — Это рядом
+C’è — Есть
+Non c’è — Нет
+Mi piace — Мне нравится
+Non mi piace — Мне не нравится
+Andrà tutto bene — Всё будет хорошо
+Ci vediamo dopo — Увидимся позже
+Pronto — Алло
+Chi è? — Кто это?
+Buon appetito — Приятного аппетита
+Salute! — Будь здоров!
+Auguri! — Поздравляю!
+Felice compleanno — С днём рождения
+Buon Natale — С Рождеством
+Buon anno — С Новым годом
+Buona Pasqua — С Пасхой
+Congratulazioni — Поздравления
+Ti auguro il meglio — Желаю всего наилучшего
+Mi fai un favore? — Сделаешь одолжение?
+Come va? — Как дела?
+Che tempo fa? — Какая погода?
+C’è il sole — Солнечно
+Piove — Идёт дождь
+Fa freddo — Холодно
+Fa caldo — Жарко
+È nuvoloso — Облачно
+Tira vento — Ветрено
+È tardi — Уже поздно
+Ho fretta — Я спешу
+Andiamo via — Пойдём отсюда
+Buona giornata — Хорошего дня

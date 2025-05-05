@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Генератор итальянского видео</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      max-width: 500px;
+      margin: auto;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    select, input {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 15px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    #status {
+      margin-top: 20px;
+      font-style: italic;
+    }
+    #spinner {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 3px solid #ccc;
+      border-top: 3px solid #333;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-left: 10px;
+      vertical-align: middle;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    #download-btn {
+      display: none;
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 15px;
+      font-weight: bold;
+      font-size: 16px;
+      margin-top: 20px;
+      border-radius: 5px;
+      text-decoration: none;
+    }
+    #download-btn:hover {
+      background-color: #45a049;
+    }
+    #progress-bar {
+      width: 100%;
+      height: 8px;
+      background: #eee;
+      margin-top: 15px;
+      display: none;
+    }
+    #progress-inner {
+      width: 0%;
+      height: 100%;
+      background: #4CAF50;
+      animation: progress 60s linear forwards;
+    }
+    @keyframes progress {
+      0% { width: 0%; }
+      100% { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <h2>Генерация обучающего видео</h2>
+
+  <label for="category">Категория:</label>
+  <select id="category">
+    <option value="verbs">Глаголы</option>
+    <option value="nouns">Существительные</option>
+    <option value="phrases">Фразы</option>
+  </select>
+
+  <label for="delay">Время показа одной фразы (сек.):</label>
+  <input type="number" id="delay" value="3" min="1" />
+
+  <label for="format">Формат:</label>
+  <select id="format" name="format">
+    <option value="video_audio">Видео с озвучкой</option>
+    <option value="video_noaudio">Видео без озвучки</option>
+    <option value="audio">Только аудио</option>
+  </select>
+
+  <button onclick="generateVideo()">Сгенерировать</button>
+
+  <div id="status"></div>
+  <div id="progress-bar"><div id="progress-inner"></div></div>
+  <a id="download-btn" href="#" download>Скачать видео</a>
+
+  <script>
+    function delay(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    async function waitForFile(filename, timeout = 120000, interval = 3000) {
+      const start = Date.now();
+      const url = `/check-file/${filename}`;
+      while (Date.now() - start < timeout) {
+        const res = await fetch(url);
+        if (res.ok) return true;
+        await delay(interval);
+      }
+      return false;
+    }
+
+    async function generateVideo() {
+      const category = document.getElementById('category').value;
+      const delayVal = document.getElementById('delay').value;
+      const format = document.getElementById('format').value;
+      const count = 100;
+
+      const statusDiv = document.getElementById('status');
+      statusDiv.innerText = '⏳ Видео создаётся';
+      const spinner = document.createElement('div');
+      spinner.id = 'spinner';
+      statusDiv.appendChild(spinner);
+
+      document.getElementById('progress-bar').style.display = 'block';
+      document.getElementById('progress-inner').style.animation = 'progress 60s linear forwards';
+      document.getElementById('download-btn').style.display = 'none';
+
+      const formData = new FormData();
+      formData.append('category', category);
+      formData.append('count', count);
+      formData.append('delay', delayVal);
+      formData.append('order', 'shuffle');
+      formData.append('format', format);
+
+      try {
+        const response = await fetch('/generate-video', {
+          method: 'POST',
+          body: formData
+        });
+
+        const data = await response.json();
+        if (!data.file || !data.download_url) throw new Error("Нет данных");
+
+        const ready = await waitForFile(data.file);
+        if (ready) {
+          statusDiv.innerText = '✅ Видео готово!';
+          const btn = document.getElementById('download-btn');
+          btn.href = data.download_url;
+          btn.style.display = 'block';
+        } else {
+          statusDiv.innerText = '❌ Видео не удалось сгенерировать вовремя.';
+        }
+
+      } catch (err) {
+        statusDiv.innerText = 'Ошибка: ' + err.message;
+      }
+
+      document.getElementById('progress-bar').style.display = 'none';
+    }
+  </script>
+</body>
+</html>
